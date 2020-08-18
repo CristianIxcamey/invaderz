@@ -1,24 +1,45 @@
 <!DOCTYPE html>
-<html language="en" manifest="manifest.appcache">
+<html language="en">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<meta property="og:url" content="http://www.victorribeiro.com/invaderz" />
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content="InvaderZ" />
 	<meta property="og:author" content="Victor Ribeiro" />
 	<meta property="og:description" content="Space invaders, but the invaders evolve with genetic algorithm" />
 	<meta property="og:image" content="http://www.victorribeiro.com/invaderz/screenshot.jpg" />
-	<title> InvaderZ - Space invaders that evolve </title>
-	<link rel="manifest" href="manifest.json" />
-	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="./css/main.css">
+	<script src="https://kit.fontawesome.com/0f8a025284.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 	<link rel="icon" type="image/x-icon" href="favicon.png" />
 	<link rel="icon" type="image/png" href="favicon.png" />
+	<title> InvaderZ - Space invaders that evolve </title>
 </head>
-<body>
+
+<body ng-app="invaderz">
+	<nav>
+		<img src="favicon.png">
+		<h3>InvaderZ</h3>
+	</nav>
+	<div ng-controller="homeController">
+		<div ng-view>
+
+		</div>
+	</div>
+	<footer>
+		<h3>Made by Cristian Ixcamey, Jacob Kelly-Martinez, & Jesse Leal</h3>
+	</footer>
 	<script src="js/Invader.js"></script>
 	<script src="js/Player.js"></script>
 	<script src="js/Genetics.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/index.js"></script>
 </body>
+
 </html>
