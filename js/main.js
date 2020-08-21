@@ -21,6 +21,9 @@ let canvas,
 	div,
 	generation;
 
+const newWaveSound = new Audio('../Sounds/newWave.wav');
+const gameOverSound = new Audio('../Sounds/GameOver.wav');
+
 canvas = document.createElement('canvas');
 canvas.width = w = 240;
 canvas.height = h = 480;
@@ -80,6 +83,7 @@ function getBestOfGeneration() {
 }
 
 function gameOver() {
+	gameOverSound.play();
 	c.fillStyle = "white";
 	c.fillRect(0, 0, w, h);
 	c.fillStyle = "black";
@@ -117,6 +121,7 @@ function update() {
 			invaders.elitism();
 		}
 		generation++;
+		newWaveSound.play();
 	}
 	if (lives > 4) {
 		gameOver();
