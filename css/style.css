@@ -1,0 +1,198 @@
+@font-face {
+  font-family: ocr a std regular;
+  src: url("./OCR.ttf");
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+canvas {
+  display: block;
+  margin: 10px auto;
+  image-rendering: auto;
+}
+
+button {
+  font-family: Arial;
+  font-size: 2em;
+  min-width: 2em;
+  cursor: pointer;
+  border: none;
+  background-color: #008CBA;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#topBar {
+  width: 95vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#logo {
+  width: 5%;
+  margin: 1% 3%;
+}
+
+#mainTitle {
+  font-family: ocr a std regular;
+  font-size: 2em;
+  color: #707070;
+}
+
+#mainMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: ocr a std regular;
+  width: 35vw;
+  height: 70vh;
+  margin: 0 auto;
+}
+
+#mainMenuTitle, .mainMenuButton {
+  font-size: 5.5em;
+  text-align: center;
+  width: 100%;
+  color: #707070;
+  margin: 5% 0 4% 0;
+}
+
+.mainMenuButton {
+  font-weight: normal;
+  font-size: 2em;
+  border-radius: 5px;
+  border: 0.5px solid #707070;
+  width: 75%;
+  height: 12%;
+  margin: 5% auto;
+}
+
+.linkBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+#instructions {
+  width: 95vw;
+  height: 75vh;
+  margin: auto;
+}
+
+#infoCards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 80%;
+  height: 70%;
+  margin: auto;
+}
+
+.card {
+  width: 35%;
+  border: 0.5px solid #707070;
+  border-radius: 10px;
+  font-family: ocr a std regular;
+  color: #707070;
+}
+
+.cardTitle {
+  font-size: 3vw;
+  padding: 5%;
+  border-bottom: 0.5px solid #707070;
+}
+
+.cardContent {
+  padding: 5% 10%;
+  font-size: 0.9vw;
+}
+
+#upgradesBar {
+  width: 80vw;
+  height: 25%;
+  margin: 2% auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: 0.5px solid #707070;
+  border-radius: 10px;
+  font-family: ocr a std regular;
+  color: #707070;
+}
+
+#upgradesBarTitle {
+  font-size: 3vw;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.upgradeInfoCard {
+  width: 15%;
+  border: 0.5px solid #707070;
+  padding: 1%;
+}
+
+.upgradeInfoCardTitle {
+  font-size: 0.9vw;
+}
+
+.upgradeInfoCardImg {
+  height: 50%;
+}
+
+.upgradeInfoCardContent {
+  font-size: 0.5vw;
+}
+/*# sourceMappingURL=style.css.map */

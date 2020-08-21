@@ -15,10 +15,11 @@ class Player {
 	}
 	
 	shoot(){
-	 if( !this.isShooting ){
-	 	this.bullet = {x: this.x+this.s/2, y: this.y, s: 3};
-	 	this.isShooting = true;
-	 }
+		if( !this.isShooting ){
+			this.bullet = {x: this.x+this.s/2, y: this.y, s: 3};
+			this.isShooting = true;
+		}
+		// console.log(this.isShooting)
 	}
 	
 	update(){
@@ -31,6 +32,7 @@ class Player {
 		}
 
 		if(this.isShooting){
+			// console.log(this.bullet.y)
 			this.bullet.y -= 0.1 * dt;
 			if( this.bullet.y < 0 ){
 				this.isShooting = false;
