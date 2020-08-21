@@ -4,6 +4,11 @@ class MainGame {
 		addEvents();
 		init();
 	}
+	destroy = ()=>{
+		destroyGame();
+	}
+
+
 }
 
 let canvas,
@@ -225,7 +230,7 @@ function addEvents() {
 
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker
-			.register('/invaderz/sw.js')
+			.register('../sw.js')
 			.then(function () { });
 	}
 
@@ -244,4 +249,9 @@ function addEvents() {
 		});
 	});
 
+}
+
+let destroyGame = ()=>{
+	document.body.removeChild(canvas);
+	document.body.removeChild(div);
 }

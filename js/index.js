@@ -21,10 +21,17 @@ app.config($routeProvider => {
         })
 })
 
-console.log("this running?");
 app.controller("homeController", function ($scope, $http, $window) {
 
 });
 app.controller('gameController', function ($scope, $http, $window, $routeParams) {
-    const game = new MainGame("normal");
+    let game;
+    $scope.start = ()=>{
+        game = new MainGame("normal");
+    }
+    $scope.$on("$destroy", ()=>{
+        game.destroy();
+        game = null;
+    })
+
 });
