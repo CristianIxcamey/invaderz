@@ -1,11 +1,17 @@
 @font-face {
 	font-family: ocr a std regular;
-	src: url("./OCR.ttf");
+	src: url("../assets/OCR.ttf");
 }
 
 $mainFont: ocr a std regular;
 $menuColor: #707070;
 $mainBorder: .5px solid $menuColor;
+
+
+$fontSizeLarge: 3vw;
+$fontSizeMedium: .9vw;
+$fontSizeSmall: .5vw;
+
 
 
 html,
@@ -18,6 +24,7 @@ body {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
+	font-family: $mainFont;
 }
 
 canvas {
@@ -111,12 +118,6 @@ a {
 
 
 
-
-$fontSizeLarge: 3vw;
-$fontSizeMedium: .9vw;
-$fontSizeSmall: .5vw;
-
-
 #instructions {
 	width: 95vw;
 	height: 75vh;
@@ -182,4 +183,44 @@ padding: 1%;
 }
 .upgradeInfoCardContent{
 	font-size:$fontSizeSmall;
+}
+
+
+#gameArea{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 95vw;
+	height: 100vh;
+	margin: auto;
+}
+#sideBar{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 30%;
+	height: 80vh;
+	align-items: center;
+	#logo{
+		width: 50%;
+	}
+}
+#gameSection{
+	align-self: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-image: url("../assets/back.jpg");
+	background-position: bottom;
+	background-repeat: no-repeat;
+	width: 50%;
+	height: 100%;
+}
+#backButton{
+	font-size: $fontSizeMedium;
+	margin: 10%;
+	padding: 5%;
+	border: $mainBorder;
+	border-radius: 5px;
+	width: 100%;
 }

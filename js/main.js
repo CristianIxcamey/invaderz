@@ -57,11 +57,11 @@ function init() {
 	dt = 0;
 	lastUpdate = Date.now();
 	canvas.style.border = "solid";
-	// let gameArea = document.getElementById("gameSection");
-	// gameArea.appendChild(canvas);
-	// gameArea.appendChild(div);
-	document.body.appendChild(canvas);
-	document.body.appendChild(div);
+	let gameArea = document.getElementById("gameSection");
+	gameArea.appendChild(canvas);
+	gameArea.appendChild(div);
+	// document.body.appendChild(canvas);
+	// document.body.appendChild(div);
 	invaders = new Genetics();
 	invaders.createPopulation();
 	player = new Player(w / 4 / 2, h / 4 - 4);

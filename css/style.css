@@ -1,6 +1,6 @@
 @font-face {
   font-family: ocr a std regular;
-  src: url("./OCR.ttf");
+  src: url("../assets/OCR.ttf");
 }
 
 html,
@@ -12,6 +12,7 @@ body {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-family: ocr a std regular;
 }
 
 canvas {
@@ -194,5 +195,72 @@ a {
 
 .upgradeInfoCardContent {
   font-size: 0.5vw;
+}
+
+#gameArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 95vw;
+  height: 100vh;
+  margin: auto;
+}
+
+#sideBar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 30%;
+  height: 80vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#sideBar #logo {
+  width: 50%;
+}
+
+#gameSection {
+  -ms-flex-item-align: center;
+      align-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-image: url("../assets/back.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  width: 50%;
+  height: 100%;
+}
+
+#backButton {
+  font-size: 0.9vw;
+  margin: 10%;
+  padding: 5%;
+  border: 0.5px solid #707070;
+  border-radius: 5px;
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

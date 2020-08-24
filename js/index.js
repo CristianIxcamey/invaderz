@@ -28,10 +28,10 @@ app.controller('gameController', function ($scope, $http, $window, $routeParams)
     let game;
     $scope.start = ()=>{
         game = new MainGame("normal");
+        document.getElementById('topBar').style.display = "none";
     }
     $scope.$on("$destroy", ()=>{
-        game.destroy();
-        game = null;
+        document.getElementById('topBar').style.display = "flex";
     })
 
 });
