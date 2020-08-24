@@ -134,6 +134,16 @@ a {
   margin: auto;
 }
 
+#infoCards .backButton {
+  width: 2%;
+  height: 5%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 0;
+  padding: 2%;
+}
+
 .card {
   width: 35%;
   border: 0.5px solid #707070;
@@ -255,12 +265,36 @@ a {
   height: 100%;
 }
 
-#backButton {
+.backButton {
   font-size: 0.9vw;
+  text-align: center;
   margin: 10%;
   padding: 5%;
   border: 0.5px solid #707070;
   border-radius: 5px;
+  width: 80%;
+}
+
+#gameMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80vh;
+}
+
+#gameMenu #infoCards {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#gameMenu .cardContent img {
   width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

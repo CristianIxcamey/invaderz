@@ -1,4 +1,3 @@
-
 var app = angular.module('invaderz', ['ngRoute']);
 app.config($routeProvider => {
     $routeProvider
@@ -10,6 +9,10 @@ app.config($routeProvider => {
         .when('/invaderz/:gameMode', {
             templateUrl: 'pages/game.html',
             controller: 'gameController'
+        })
+
+        .when('/invaderz', {
+            templateUrl: 'pages/gameMenu.html',
         })
 
         .when('/instructions', {
@@ -26,11 +29,12 @@ app.controller("homeController", function ($scope, $http, $window) {
 });
 app.controller('gameController', function ($scope, $http, $window, $routeParams) {
     let game;
-    $scope.start = ()=>{
-        game = new MainGame("normal");
+    $scope.start = () => {
+        game = new MainGame($routeParams.gameMode);
+        // console.log($routeParams.gameMode)
         document.getElementById('topBar').style.display = "none";
     }
-    $scope.$on("$destroy", ()=>{
+    $scope.$on("$destroy", () => {
         document.getElementById('topBar').style.display = "flex";
     })
 

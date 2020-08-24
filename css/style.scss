@@ -131,6 +131,13 @@ a {
 	width: 80%;
 	height: 70%;
 	margin: auto;
+	.backButton{
+		width: 2%;
+		height: 5%;
+		align-self: center;
+		margin: 0;
+		padding: 2%;
+	}
 }
 
 .card {
@@ -166,27 +173,32 @@ a {
 	color: $menuColor;
 
 }
-#upgradesBarTitle{
+
+#upgradesBarTitle {
 	font-size: $fontSizeLarge;
 	align-self: center;
 }
-.upgradeInfoCard{
-width: 15%;
-border: $mainBorder;
-padding: 1%;
+
+.upgradeInfoCard {
+	width: 15%;
+	border: $mainBorder;
+	padding: 1%;
 }
-.upgradeInfoCardTitle{
+
+.upgradeInfoCardTitle {
 	font-size: $fontSizeMedium;
 }
-.upgradeInfoCardImg{
+
+.upgradeInfoCardImg {
 	height: 50%;
 }
-.upgradeInfoCardContent{
-	font-size:$fontSizeSmall;
+
+.upgradeInfoCardContent {
+	font-size: $fontSizeSmall;
 }
 
 
-#gameArea{
+#gameArea {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -194,18 +206,21 @@ padding: 1%;
 	height: 100vh;
 	margin: auto;
 }
-#sideBar{
+
+#sideBar {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	width: 30%;
 	height: 80vh;
 	align-items: center;
-	#logo{
+
+	#logo {
 		width: 50%;
 	}
 }
-#gameSection{
+
+#gameSection {
 	align-self: center;
 	display: flex;
 	flex-direction: column;
@@ -216,11 +231,32 @@ padding: 1%;
 	width: 50%;
 	height: 100%;
 }
-#backButton{
+
+.backButton {
 	font-size: $fontSizeMedium;
+	text-align: center;
 	margin: 10%;
 	padding: 5%;
 	border: $mainBorder;
 	border-radius: 5px;
-	width: 100%;
+	width: 80%;
+}
+
+
+
+
+#gameMenu {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 80vh;
+
+	#infoCards {
+		align-items: center;
+	}
+	.cardContent{
+		img{
+			width: 100%;
+		}
+	}
 }
