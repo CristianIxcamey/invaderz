@@ -9,6 +9,7 @@ $mainBorder: .5px solid $menuColor;
 
 
 $fontSizeLarge: 3vw;
+$fontSizePlus:1.5vw;
 $fontSizeMedium: .9vw;
 $fontSizeSmall: .5vw;
 
@@ -131,7 +132,8 @@ a {
 	width: 80%;
 	height: 70%;
 	margin: auto;
-	.backButton{
+
+	.backButton {
 		width: 2%;
 		height: 5%;
 		align-self: center;
@@ -254,9 +256,59 @@ a {
 	#infoCards {
 		align-items: center;
 	}
-	.cardContent{
-		img{
+
+	.cardContent {
+		img {
 			width: 100%;
 		}
 	}
+}
+
+
+
+
+
+
+#credits {
+	width: 95vw;
+	margin: auto;
+	color: $menuColor;
+
+	.backButton {
+		padding: 2%;
+		width: 50%;
+		height: 5%;
+	}
+}
+
+.creditsSection {
+	border: $mainBorder;
+	width: 90%;
+	height: 40%;
+	margin: 5%;
+	text-align: start;
+}
+
+.creditsTitle {
+	font-size: $fontSizeLarge;
+	margin: 1%;
+}
+
+.creditsDesc {
+	margin: 1%;
+	font-size: $fontSizePlus;
+}
+
+.contributorList {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.contributor {
+	border: $mainBorder;
+	border-radius: 2px;
+	width: 45%;
+	padding: 1%;
+	margin: 1%;
 }

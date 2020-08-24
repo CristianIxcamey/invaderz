@@ -297,4 +297,54 @@ a {
 #gameMenu .cardContent img {
   width: 100%;
 }
+
+#credits {
+  width: 95vw;
+  margin: auto;
+  color: #707070;
+}
+
+#credits .backButton {
+  padding: 2%;
+  width: 50%;
+  height: 5%;
+}
+
+.creditsSection {
+  border: 0.5px solid #707070;
+  width: 90%;
+  height: 40%;
+  margin: 5%;
+  text-align: start;
+}
+
+.creditsTitle {
+  font-size: 3vw;
+  margin: 1%;
+}
+
+.creditsDesc {
+  margin: 1%;
+  font-size: 1.5vw;
+}
+
+.contributorList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.contributor {
+  border: 0.5px solid #707070;
+  border-radius: 2px;
+  width: 45%;
+  padding: 1%;
+  margin: 1%;
+}
 /*# sourceMappingURL=style.css.map */
