@@ -25,6 +25,8 @@ let canvas,
 	rightBtn,
 	fireBtn,
 	div,
+	gameMode,
+	multiplayer,
 	generation;
 
 const newWaveSound = new Audio('../Sounds/newWave.wav');
@@ -55,6 +57,10 @@ div.appendChild(fireBtn)
 div.appendChild(rightBtn);
 
 function init() {
+	if(window.location.href.indexOf("normal")==-1){
+		gameMode = "new"
+	}
+	multiplayer = false;
 	lives = 0;
 	generation = 1;
 	dt = 0;
@@ -116,7 +122,9 @@ function update() {
 		invaders.population[i].show();
 	}
 	playerOne.show();
-	playerTwo.show();
+	if(multiplayer){
+		playerTwo.show();
+	}
 	let allDead = true;
 	for (let i = 0; i < invaders.population.length; i++) {
 		if (invaders.population[i].isAlive) {
@@ -158,12 +166,21 @@ function addEvents() {
 				playerOne.isMovingRight = true;
 				break;
 			case 87:
+				if(!multiplayer && gameMode == "new"){
+					multiplayer = true;
+				}
 				playerTwo.shoot();
 				break;
 			case 65:
+				if(!multiplayer && gameMode == "new"){
+					multiplayer = true;
+				}
 				playerTwo.isMovingLeft = true;
 				break;
 			case 68:
+				if(!multiplayer && gameMode == "new"){
+					multiplayer = true;
+				}
 				playerTwo.isMovingRight = true;
 				break;
 		}
