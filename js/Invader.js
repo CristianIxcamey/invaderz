@@ -16,6 +16,7 @@ class Invader {
 		this.fit = 0;
 		this.invadedSound = new Audio('../Sounds/burst.wav');
 		this.damageTakenSound = new Audio('../Sounds/explosion.wav');
+		this.health = Math.max((Math.floor(Math.random() * 6) - 2), 1);//This sets the health to be 60% 1 hp, 20% 2, 20% 3.
 	}
 
 	update() {
@@ -54,7 +55,11 @@ class Invader {
 			for (let i = 0; i < area.data.length; i++) {
 				if (area.data[i]) {
 					this.damageTakenSound.play();
-					this.isAlive = false;
+					this.health--;
+					if (this.health <= 0)
+					{
+						this.isAlive = false;
+					}
 					player.bullet = {};
 					player.isShooting = false;
 					break;
@@ -66,6 +71,18 @@ class Invader {
 
 	show() {
 		if (this.isAlive) {
+			switch (this.health)
+			{
+				case 1:
+					this.color = 'black';
+					break;
+				case 2:
+					this.color = 'blue';
+					break;
+				case 3:
+					this.color = 'red';
+					break;
+			}
 			c.fillStyle = this.color;
 			for (let i = 0; i < this.shape.length; i++) {
 				if (this.shape[i]) {
