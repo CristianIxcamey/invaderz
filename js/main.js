@@ -4,7 +4,7 @@ class MainGame {
 		addEvents();
 		init();
 	}
-	destroy = ()=>{
+	destroy = () => {
 		destroyGame();
 	}
 
@@ -17,7 +17,8 @@ let canvas,
 	w,
 	h,
 	dt,
-	player,
+	playerOne,
+	playerTwo,
 	lives,
 	lastUpdate,
 	leftBtn,
@@ -32,7 +33,9 @@ const gameOverSound = new Audio('../Sounds/GameOver.wav');
 canvas = document.createElement('canvas');
 canvas.width = w = 240;
 canvas.height = h = 480;
-c = canvas.getContext('2d', { alpha: false });
+c = canvas.getContext('2d', {
+	alpha: false
+});
 if (window.devicePixelRatio > 1) {
 	c.canvas.width = c.canvas.width * window.devicePixelRatio;
 	c.canvas.height = c.canvas.height * window.devicePixelRatio;
@@ -64,7 +67,8 @@ function init() {
 	// document.body.appendChild(div);
 	invaders = new Genetics();
 	invaders.createPopulation();
-	player = new Player(w / 4 / 2, h / 4 - 4);
+	playerOne = new Player(w / 4 / 2, h / 4 - 4,null,"blue");
+	playerTwo = new Player(w / 4 / 2, h / 4 - 4,null,"orange");
 	update();
 }
 
@@ -75,7 +79,8 @@ function deltaTime() {
 }
 
 function getBestOfGeneration() {
-	let index = 0, best = 0;
+	let index = 0,
+		best = 0;
 	for (let i = 0; i < invaders.population.length; i++) {
 		if (invaders.population[i].fit > best) {
 			best = invaders.population[i].fit;
@@ -110,7 +115,8 @@ function update() {
 	for (let i = 0; i < invaders.population.length; i++) {
 		invaders.population[i].show();
 	}
-	player.show();
+	playerOne.show();
+	playerTwo.show();
 	let allDead = true;
 	for (let i = 0; i < invaders.population.length; i++) {
 		if (invaders.population[i].isAlive) {
@@ -142,16 +148,23 @@ function addEvents() {
 			case 13:
 				init();
 				break;
-			case 32:
-				player.shoot();
+			case 38:
+				playerOne.shoot();
 				break;
 			case 37:
-			case 65:
-				player.isMovingLeft = true;
+				playerOne.isMovingLeft = true;
 				break;
 			case 39:
+				playerOne.isMovingRight = true;
+				break;
+			case 87:
+				playerTwo.shoot();
+				break;
+			case 65:
+				playerTwo.isMovingLeft = true;
+				break;
 			case 68:
-				player.isMovingRight = true;
+				playerTwo.isMovingRight = true;
 				break;
 		}
 	});
@@ -159,12 +172,16 @@ function addEvents() {
 	document.addEventListener("keyup", function (e) {
 		switch (e.keyCode) {
 			case 37:
-			case 65:
-				player.isMovingLeft = false;
+				playerOne.isMovingLeft = false;
 				break;
 			case 39:
+				playerOne.isMovingRight = false;
+				break;
+			case 65:
+				playerTwo.isMovingLeft = false;
+				break;
 			case 68:
-				player.isMovingRight = false;
+				playerTwo.isMovingRight = false;
 				break;
 		}
 	});
@@ -177,7 +194,7 @@ function addEvents() {
 		if (lives > 4) {
 			init();
 		} else {
-			player.shoot();
+			playerOne.shoot();
 		}
 	});
 
@@ -185,40 +202,40 @@ function addEvents() {
 		if (lives > 4) {
 			init();
 		} else {
-			player.shoot();
+			playerOne.shoot();
 		}
 	});
 
 	leftBtn.addEventListener('touchstart', function () {
-		player.isMovingLeft = true;
+		playerOne.isMovingLeft = true;
 	});
 
 	leftBtn.addEventListener('touchend', function () {
-		player.isMovingLeft = false;
+		playerOne.isMovingLeft = false;
 	});
 
 	leftBtn.addEventListener('mousedown', function () {
-		player.isMovingLeft = true;
+		playerOne.isMovingLeft = true;
 	});
 
 	leftBtn.addEventListener('mouseup', function () {
-		player.isMovingLeft = false;
+		playerOne.isMovingLeft = false;
 	});
 
 	rightBtn.addEventListener('touchstart', function () {
-		player.isMovingRight = true;
+		playerOne.isMovingRight = true;
 	});
 
 	rightBtn.addEventListener('touchend', function () {
-		player.isMovingRight = false;
+		playerOne.isMovingRight = false;
 	});
 
 	rightBtn.addEventListener('mousedown', function () {
-		player.isMovingRight = true;
+		playerOne.isMovingRight = true;
 	});
 
 	rightBtn.addEventListener('mouseup', function () {
-		player.isMovingRight = false;
+		playerOne.isMovingRight = false;
 	});
 
 	window.addEventListener('load', function (e) {
@@ -236,7 +253,7 @@ function addEvents() {
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker
 			.register('../sw.js')
-			.then(function () { });
+			.then(function () {});
 	}
 
 	let deferredPrompt;
@@ -256,7 +273,7 @@ function addEvents() {
 
 }
 
-let destroyGame = ()=>{
+let destroyGame = () => {
 	document.body.removeChild(canvas);
 	document.body.removeChild(div);
 }

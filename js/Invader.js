@@ -48,10 +48,10 @@ class Invader {
 		this.frame++;
 		this.fit = Math.round(this.y);
 
-		if (Math.sqrt((player.bullet.y - this.y) ** 2 + (player.bullet.x - (this.x + 2)) ** 2) < 2.5) {
-			let x = player.bullet.x;
-			let y = player.bullet.y;
-			let area = c.getImageData((x * this.s), y * this.s, player.bullet.s + 1, player.bullet.s);
+		if (Math.sqrt((playerOne.bullet.y - this.y) ** 2 + (playerOne.bullet.x - (this.x + 2)) ** 2) < 2.5) {
+			let x = playerOne.bullet.x;
+			let y = playerOne.bullet.y;
+			let area = c.getImageData((x * this.s), y * this.s, playerOne.bullet.s + 1, playerOne.bullet.s);
 			for (let i = 0; i < area.data.length; i++) {
 				if (area.data[i]) {
 					this.damageTakenSound.play();
@@ -60,8 +60,26 @@ class Invader {
 					{
 						this.isAlive = false;
 					}
-					player.bullet = {};
-					player.isShooting = false;
+					playerOne.bullet = {};
+					playerOne.isShooting = false;
+					break;
+				}
+			}
+		}
+		if (Math.sqrt((playerTwo.bullet.y - this.y) ** 2 + (playerTwo.bullet.x - (this.x + 2)) ** 2) < 2.5) {
+			let x = playerTwo.bullet.x;
+			let y = playerTwo.bullet.y;
+			let area = c.getImageData((x * this.s), y * this.s, playerTwo.bullet.s + 1, playerTwo.bullet.s);
+			for (let i = 0; i < area.data.length; i++) {
+				if (area.data[i]) {
+					this.damageTakenSound.play();
+					this.health--;
+					if (this.health <= 0)
+					{
+						this.isAlive = false;
+					}
+					playerTwo.bullet = {};
+					playerTwo.isShooting = false;
 					break;
 				}
 			}
