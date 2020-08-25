@@ -112,6 +112,9 @@ function gameOver() {
 }
 
 function update() {
+	if(window.location.href.indexOf("new")==-1 && window.location.href.indexOf("normal")==-1){
+		return;
+	}
 	c.fillStyle = "white";
 	c.fillRect(0, 0, w, h);
 	c.fillStyle = "black";
