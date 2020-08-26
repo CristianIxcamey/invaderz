@@ -1,6 +1,6 @@
 class Invader {
 
-	constructor(x, y, shape, color, speed) {
+	constructor(x, y, shape, index, color, speed) {
 		this.x = x || 0;
 		this.y = y || 0;
 		this.xDir = 1;
@@ -17,8 +17,7 @@ class Invader {
 		this.invadedSound = new Audio('../Sounds/burst.wav');
 		this.damageTakenSound = new Audio('../Sounds/explosion.wav');
 		this.health = 1;
-		if (window.location.href.indexOf('normal') == -1)
-		{
+		if (window.location.href.indexOf('normal') == -1) {
 			this.health = Math.max((Math.floor(Math.random() * 6) - 2), 1);//This sets the health to be 60% 1 hp, 20% 2, 20% 3.
 		}
 	}
@@ -60,12 +59,20 @@ class Invader {
 				if (area.data[i]) {
 					this.damageTakenSound.play();
 					this.health--;
-					if (this.health <= 0)
-					{
+					if (this.health <= 0) {
 						this.isAlive = false;
 					}
 					playerOne.bullet = {};
 					playerOne.isShooting = false;
+					if (window.location.href.indexOf('normal') == -1) {
+						//A random number generated to determine the change of creating a power-up
+						const percentage = Math.random();
+						// Makes the chances of creating a power up 20%
+						if (percentage < 0.2) {
+							// Creates a power-up and pushes it to the invaders power-ups collection
+							invaders.powerUpPopulation.push(new PowerUp(this.x, this.y));
+						};
+					}
 					break;
 				}
 			}
@@ -77,13 +84,10 @@ class Invader {
 			for (let i = 0; i < area.data.length; i++) {
 				if (area.data[i]) {
 					this.damageTakenSound.play();
-					this.health--;
-					if (this.health <= 0)
-					{
-						this.isAlive = false;
-					}
+					this.isAlive = false;
 					playerTwo.bullet = {};
 					playerTwo.isShooting = false;
+
 					break;
 				}
 			}
@@ -93,8 +97,7 @@ class Invader {
 
 	show() {
 		if (this.isAlive) {
-			switch (this.health)
-			{
+			switch (this.health) {
 				case 1:
 					this.color = 'black';
 					break;
