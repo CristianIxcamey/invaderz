@@ -16,20 +16,12 @@ class PowerUp {
         this.isAlive = true;
         this.fit = 0;
         this.powerUpAdded = false;
+        this.player = undefined;
     }
 
     update() {
         if (this.y >= h >> 2 && !this.powerUpAdded) {
-            // Sets the speed of the bullet to equal .03 more
-            playerOne.bulletSpeed += 0.03;
-            playerTwo.bulletSpeed += 0.03;
-            //Onces the power-up has been added, it sets boolean so that it isn't added again.
-            this.powerUpAdded = true;
-            // Creates a timeout to reset the bullet speed after the duration of the power-up
-            setTimeout(() => {
-                playerOne.bulletSpeed -= 0.03;
-                playerTwo.bulletSpeed -= 0.03;
-            }, 10000);
+            this.isAlive = false;
             return;
         }
 
@@ -53,6 +45,32 @@ class PowerUp {
 
         this.frame++;
         this.fit = Math.round(this.y);
+
+        if (Math.sqrt((playerOne.y - this.y) ** 2 + (playerOne.x - (this.x + 2)) ** 2) < 2.5) {
+            // Sets the speed of the bullet to equal .03 more
+            playerOne.bulletSpeed += 0.03;
+            //Onces the power-up has been added, it sets boolean so that it isn't added again.
+            this.powerUpAdded = true;
+            // Creates a timeout to reset the bullet speed after the duration of the power-up
+            setTimeout(() => {
+                playerOne.bulletSpeed -= 0.03;
+            }, 10000);
+            this.isAlive = false;
+            return;
+        }
+
+        if (Math.sqrt((playerTwo.y - this.y) ** 2 + (playerTwo.x - (this.x + 2)) ** 2) < 2.5) {
+            // Sets the speed of the bullet to equal .03 more
+            playerTwo.bulletSpeed += 0.03;
+            //Onces the power-up has been added, it sets boolean so that it isn't added again.
+            this.powerUpAdded = true;
+            // Creates a timeout to reset the bullet speed after the duration of the power-up
+            setTimeout(() => {
+                playerTwo.bulletSpeed -= 0.03;
+            }, 10000);
+            this.isAlive = false;
+            return;
+        }
 
     }
 
