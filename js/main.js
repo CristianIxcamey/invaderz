@@ -57,7 +57,7 @@ div.appendChild(fireBtn)
 div.appendChild(rightBtn);
 
 function init() {
-	if(window.location.href.indexOf("normal")==-1){
+	if (window.location.href.indexOf("normal") == -1) {
 		gameMode = "new"
 	}
 	multiplayer = false;
@@ -69,12 +69,10 @@ function init() {
 	let gameArea = document.getElementById("gameSection");
 	gameArea.appendChild(canvas);
 	gameArea.appendChild(div);
-	// document.body.appendChild(canvas);
-	// document.body.appendChild(div);
 	invaders = new Genetics();
 	invaders.createPopulation();
-	playerOne = new Player(w / 4 / 2, h / 4 - 4,null,"blue");
-	playerTwo = new Player(w / 4 / 2, h / 4 - 4,null,"orange");
+	playerOne = new Player(w / 4 / 2, h / 4 - 4, null, "blue");
+	playerTwo = new Player(w / 4 / 2, h / 4 - 4, null, "orange");
 	update();
 }
 
@@ -122,9 +120,14 @@ function update() {
 		invaders.population[i].show();
 	}
 	playerOne.show();
-	if(multiplayer){
+	if (multiplayer) {
 		playerTwo.show();
 	}
+	// Iterates through all the power-ups inside the invaders power-ups collection
+	invaders.powerUpPopulation.forEach(powerUp => {
+		// shows the power-up
+		powerUp.show();
+	});
 	let allDead = true;
 	for (let i = 0; i < invaders.population.length; i++) {
 		if (invaders.population[i].isAlive) {
@@ -166,19 +169,19 @@ function addEvents() {
 				playerOne.isMovingRight = true;
 				break;
 			case 87:
-				if(!multiplayer && gameMode == "new"){
+				if (!multiplayer && gameMode == "new") {
 					multiplayer = true;
 				}
 				playerTwo.shoot();
 				break;
 			case 65:
-				if(!multiplayer && gameMode == "new"){
+				if (!multiplayer && gameMode == "new") {
 					multiplayer = true;
 				}
 				playerTwo.isMovingLeft = true;
 				break;
 			case 68:
-				if(!multiplayer && gameMode == "new"){
+				if (!multiplayer && gameMode == "new") {
 					multiplayer = true;
 				}
 				playerTwo.isMovingRight = true;
@@ -270,7 +273,7 @@ function addEvents() {
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker
 			.register('../sw.js')
-			.then(function () {});
+			.then(function () { });
 	}
 
 	let deferredPrompt;

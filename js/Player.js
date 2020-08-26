@@ -11,6 +11,7 @@ class Player {
 		this.isMovingLeft = false;
 		this.isMovingRight = false;
 		this.isShooting = false;
+		this.bulletSpeed = 0.1;
 		this.bullet = { x: this.x, y: this.y, s: 3 };
 		this.shootSound = new Audio('../Sounds/laser1.wav');
 
@@ -34,7 +35,7 @@ class Player {
 		}
 
 		if (this.isShooting) {
-			this.bullet.y -= 0.1 * dt;
+			this.bullet.y -= this.bulletSpeed * dt;
 			if (this.bullet.y < 0) {
 				this.isShooting = false;
 				this.bullet = {};
