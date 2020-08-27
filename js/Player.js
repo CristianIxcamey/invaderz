@@ -15,6 +15,7 @@ class Player {
 		this.bullet = { x: this.x, y: this.y, s: 3 };
 		this.shootSound = new Audio('../Sounds/laser1.wav');
 		this.shootSound.volume = 0.2;
+		this.instakill = false;
 
 	}
 
