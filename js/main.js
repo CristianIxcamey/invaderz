@@ -30,7 +30,9 @@ let canvas,
 	generation;
 
 const newWaveSound = new Audio('../Sounds/newWave.wav');
+newWaveSound.volume = 0.2;
 const gameOverSound = new Audio('../Sounds/GameOver.wav');
+gameOverSound.volume = 0.2;
 
 canvas = document.createElement('canvas');
 canvas.width = w = 240;

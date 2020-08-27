@@ -17,9 +17,16 @@ class PowerUp {
         this.fit = 0;
         this.powerUpAdded = false;
         this.player = undefined;
+        this.powerUp1Sound = new Audio('../Sounds/powerUp1.wav');
+        this.powerUp1Sound.volume = 0.2;
+        this.powerUp2Sound = new Audio('../Sounds/powerUp2.wav');
+        this.powerUp2Sound.volume = 0.2;
     }
 
     update() {
+        this.powerUp1Sound.play();
+        this.powerUp2Sound.play();
+
         if (this.y >= h >> 2 && !this.powerUpAdded) {
             this.isAlive = false;
             return;

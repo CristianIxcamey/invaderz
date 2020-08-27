@@ -15,7 +15,9 @@ class Invader {
 		this.isAlive = true;
 		this.fit = 0;
 		this.invadedSound = new Audio('../Sounds/burst.wav');
+		this.invadedSound.volume = 0.2;
 		this.damageTakenSound = new Audio('../Sounds/explosion.wav');
+		this.damageTakenSound.volume = 0.2;
 		this.health = 1;
 		if (window.location.href.indexOf('normal') == -1) {
 			this.health = Math.max((Math.floor(Math.random() * 6) - 2), 1);//This sets the health to be 60% 1 hp, 20% 2, 20% 3.
