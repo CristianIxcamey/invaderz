@@ -77,6 +77,7 @@ class Invader {
 				}
 			}
 		}
+
 		if (Math.sqrt((playerTwo.bullet.y - this.y) ** 2 + (playerTwo.bullet.x - (this.x + 2)) ** 2) < 2.5) {
 			let x = playerTwo.bullet.x;
 			let y = playerTwo.bullet.y;
@@ -87,7 +88,15 @@ class Invader {
 					this.isAlive = false;
 					playerTwo.bullet = {};
 					playerTwo.isShooting = false;
-
+					if (window.location.href.indexOf('normal') == -1) {
+						//A random number generated to determine the change of creating a power-up
+						const percentage = Math.random();
+						// Makes the chances of creating a power up 20%
+						if (percentage < 0.2) {
+							// Creates a power-up and pushes it to the invaders power-ups collection
+							invaders.powerUpPopulation.push(new PowerUp(this.x, this.y));
+						};
+					}
 					break;
 				}
 			}
