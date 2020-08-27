@@ -59,7 +59,7 @@ class Invader {
 				if (area.data[i]) {
 					this.damageTakenSound.play();
 					this.health--;
-					if (this.health <= 0) {
+					if (this.health <= 0 || playerOne.instakill) {
 						this.isAlive = false;
 					}
 					playerOne.bullet = {};
@@ -85,7 +85,10 @@ class Invader {
 			for (let i = 0; i < area.data.length; i++) {
 				if (area.data[i]) {
 					this.damageTakenSound.play();
-					this.isAlive = false;
+					this.health--;
+					if (this.health <= 0 || playerTwo.instakill) {
+						this.isAlive = false;
+					}
 					playerTwo.bullet = {};
 					playerTwo.isShooting = false;
 					if (window.location.href.indexOf('normal') == -1) {

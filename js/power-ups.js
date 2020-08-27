@@ -12,7 +12,7 @@ class PowerUp {
         this.maxFrame = Math.floor(Math.random() * 32) + 16;
         this.color = color || 'green';
         this.shape = shape || [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-        this.type = "powerUp";
+        this.type = Math.floor(Math.random() * 3);
         this.isAlive = true;
         this.fit = 0;
         this.powerUpAdded = false;
@@ -47,27 +47,13 @@ class PowerUp {
         this.fit = Math.round(this.y);
 
         if (Math.sqrt((playerOne.y - this.y) ** 2 + (playerOne.x - (this.x + 2)) ** 2) < 2.5) {
-            // Sets the speed of the bullet to equal .03 more
-            playerOne.bulletSpeed += 0.03;
-            //Onces the power-up has been added, it sets boolean so that it isn't added again.
-            this.powerUpAdded = true;
-            // Creates a timeout to reset the bullet speed after the duration of the power-up
-            setTimeout(() => {
-                playerOne.bulletSpeed -= 0.03;
-            }, 10000);
+            this.applyPowerup(playerOne);
             this.isAlive = false;
             return;
         }
 
         if (Math.sqrt((playerTwo.y - this.y) ** 2 + (playerTwo.x - (this.x + 2)) ** 2) < 2.5) {
-            // Sets the speed of the bullet to equal .03 more
-            playerTwo.bulletSpeed += 0.03;
-            //Onces the power-up has been added, it sets boolean so that it isn't added again.
-            this.powerUpAdded = true;
-            // Creates a timeout to reset the bullet speed after the duration of the power-up
-            setTimeout(() => {
-                playerTwo.bulletSpeed -= 0.03;
-            }, 10000);
+            this.applyPowerup(playerTwo);
             this.isAlive = false;
             return;
         }
@@ -85,4 +71,32 @@ class PowerUp {
             this.update();
         }
     }
+	
+	applyPowerup(player) {
+		switch(this.type)
+		{
+			case 0:
+				//bullet speed
+				player.bulletSpeed += 0.03;
+				setTimeout(() => {
+					player.bulletSpeed -= 0.03;
+				}, 10000);
+				break;
+			case 1:
+				//player speed
+				player.speed += 0.016;
+				setTimeout(() => {
+					player.bulletSpeed -= 0.03;
+				}, 10000);
+				break;
+			case 2:
+				//increase bullet damage
+				player.instakill = true;
+				setTimeout(() => {
+					player.instakill = false;
+				}, 10000);
+				break;
+		}
+		this.powerUpAdded = true;
+	}
 }
