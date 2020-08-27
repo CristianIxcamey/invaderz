@@ -107,10 +107,13 @@ function gameOver() {
 	let txt = "Game Over!";
 	c.font = "30px Arial";
 	c.fillText(txt, (w - c.measureText(txt).width) / 2, h / 2);
+	multiplayer = false;
+	gameMode = "";
 }
 
 function update() {
 	if(window.location.href.indexOf("new")==-1 && window.location.href.indexOf("normal")==-1){
+		gameOver();
 		return;
 	}
 	c.fillStyle = "white";
@@ -294,9 +297,4 @@ function addEvents() {
 		});
 	});
 
-}
-
-let destroyGame = () => {
-	document.body.removeChild(canvas);
-	document.body.removeChild(div);
 }
