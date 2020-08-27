@@ -17,6 +17,7 @@ class Player {
 		this.shootSound.volume = 0.2;
 		this.instakill = false;
 
+
 	}
 
 	shoot() {
