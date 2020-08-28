@@ -69,7 +69,7 @@ class PowerUp {
         this.frame++;
         this.fit = Math.round(this.y);
 
-        if (Math.sqrt((playerOne.y - this.y) ** 2 + (playerOne.x - (this.x + 2)) ** 2) < 2.5) {
+        if (Math.sqrt((playerOne.y - this.y) ** 2 + (playerOne.x - (this.x + 2)) ** 2) < 3.5) {
             this.powerUp1Sound.play();
             this.applyPowerup(playerOne);
             this.isAlive = false;
@@ -110,7 +110,7 @@ class PowerUp {
                 //player speed
                 player.speed += 0.016;
                 setTimeout(() => {
-                    player.bulletSpeed -= 0.03;
+                    player.speed -= 0.016;
                 }, 10000);
                 break;
             case 2:

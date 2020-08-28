@@ -34,6 +34,7 @@ newWaveSound.volume = 0.2;
 const gameOverSound = new Audio('../Sounds/GameOver.wav');
 gameOverSound.volume = 0.2;
 
+
 canvas = document.createElement('canvas');
 canvas.width = w = 240;
 canvas.height = h = 480;
@@ -98,8 +99,10 @@ function getBestOfGeneration() {
 	}
 }
 
-function gameOver() {
-	gameOverSound.play();
+function gameOver(inGame) {
+	if (inGame) {
+		gameOverSound.play();
+	}
 	c.fillStyle = "white";
 	c.fillRect(0, 0, w, h);
 	c.fillStyle = "black";
@@ -114,8 +117,8 @@ function gameOver() {
 }
 
 function update() {
-	if(window.location.href.indexOf("new")==-1 && window.location.href.indexOf("normal")==-1){
-		gameOver();
+	if (window.location.href.indexOf("new") == -1 && window.location.href.indexOf("normal") == -1) {
+		gameOver(false);
 		return;
 	}
 	c.fillStyle = "white";
@@ -157,7 +160,7 @@ function update() {
 		newWaveSound.play();
 	}
 	if (lives > 4) {
-		gameOver();
+		gameOver(true);
 		return;
 	}
 	deltaTime();
