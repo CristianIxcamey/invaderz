@@ -10,41 +10,29 @@ class Player {
 		this.speed = 0.05;
 		this.isMovingLeft = false;
 		this.isMovingRight = false;
-		this.isShooting = false;
 		this.bulletSpeed = 0.1;
-		this.bullet = { x: this.x, y: this.y, s: 3 };
 		this.shootSound = new Audio('../Sounds/laser1.wav');
 		this.shootSound.volume = 0.2;
 		this.instakill = false;
-
-
+		this.maxbullets = 1;
+		this.bullets = 0;
 	}
 
 	shoot() {
-		if (!this.isShooting) {
-			this.bullet = { x: this.x + this.s / 2, y: this.y, s: 3 };
-			this.isShooting = true;
+		if (this.bullets < this.maxbullets) {
+			invaders.bulletPopulation.push(new Bullet(this.x, this.y, this.color, this.bulletSpeed));
+			this.bullets++;
 			this.shootSound.play();
 		}
 	}
 
 	update() {
-
 		if (this.x > 0 && this.isMovingLeft) {
 			this.x -= this.speed * dt;
 		}
 		if (this.x < w / 4 - this.s && this.isMovingRight) {
 			this.x += this.speed * dt;
 		}
-
-		if (this.isShooting) {
-			this.bullet.y -= this.bulletSpeed * dt;
-			if (this.bullet.y < 0) {
-				this.isShooting = false;
-				this.bullet = {};
-			}
-		}
-
 	}
 
 	show() {
@@ -53,9 +41,6 @@ class Player {
 			if (this.shape[i]) {
 				c.fillRect((this.x + i % 4) * this.s, (this.y + (i >> 2)) * this.s, this.s, this.s);
 			}
-		}
-		if (this.isShooting) {
-			c.fillRect(this.bullet.x * this.s, this.bullet.y * this.s, this.bullet.s, this.bullet.s);
 		}
 		this.update();
 	}

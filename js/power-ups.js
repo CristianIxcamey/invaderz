@@ -12,7 +12,7 @@ class PowerUp {
         this.maxFrame = Math.floor(Math.random() * 32) + 16;
         this.color = color || 'green';
         this.shape = shape || [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-        this.type = Math.floor(Math.random() * 3);
+        this.type = Math.floor(Math.random() * 4);
         switch (this.type) {
             case 0:
                 //bullet speed
@@ -26,6 +26,10 @@ class PowerUp {
                 //increase bullet damage
                 this.color = "darkorange";
                 break;
+			case 3:
+				//allow extra bullets on screen
+				this.color = "purple";
+				break;
         }
         this.isAlive = true;
         this.fit = 0;
@@ -116,6 +120,12 @@ class PowerUp {
                     player.instakill = false;
                 }, 10000);
                 break;
+			case 3:
+				//allow extra bullets
+				player.maxbullets++;
+				setTimeout(() => {
+					player.maxbullets--;
+				}, 10000);
         }
         this.powerUpAdded = true;
     }

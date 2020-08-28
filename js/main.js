@@ -136,6 +136,9 @@ function update() {
 		// shows the power-up
 		powerUp.show();
 	});
+	invaders.bulletPopulation.forEach(bullet => {
+		bullet.show();
+	});
 	let allDead = true;
 	for (let i = 0; i < invaders.population.length; i++) {
 		if (invaders.population[i].isAlive) {

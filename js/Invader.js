@@ -52,7 +52,35 @@ class Invader {
 
 		this.frame++;
 		this.fit = Math.round(this.y);
-
+		
+		invaders.bulletPopulation.forEach(b => {
+			if (Math.sqrt((b.y - this.y) ** 2 + (b.x - (this.x + 2)) ** 2) < 2.5 && this.isAlive && b.isAlive) {
+				let x = b.x;
+				let y = b.y;
+				let area = c.getImageData((x * this.s), y * this.s, b.s + 1, b.s);
+				for (let i = 0; i < area.data.length; i++) {
+					if (area.data[i]) {
+						this.damageTakenSound.play();
+						this.health--;
+						if (this.health <= 0 || b.player.instakill) {
+							this.isAlive = false;
+						}
+						b.die();
+						if (window.location.href.indexOf('normal') == -1) {
+							//A random number generated to determine the change of creating a power-up
+							const percentage = Math.random();
+							// Makes the chances of creating a power up 20%
+							if (percentage < 0.2) {
+								// Creates a power-up and pushes it to the invaders power-ups collection
+								invaders.powerUpPopulation.push(new PowerUp(this.x, this.y));
+							};
+						}
+						break;
+					}
+				}
+			}
+		});
+/*
 		if (Math.sqrt((playerOne.bullet.y - this.y) ** 2 + (playerOne.bullet.x - (this.x + 2)) ** 2) < 2.5) {
 			let x = playerOne.bullet.x;
 			let y = playerOne.bullet.y;
@@ -106,7 +134,7 @@ class Invader {
 				}
 			}
 		}
-
+*/
 	}
 
 	show() {

@@ -3,6 +3,7 @@ class Genetics {
 	constructor() {
 		this.population = [];
 		this.powerUpPopulation = [];
+		this.bulletPopulation = [];
 		this.populationTmp = [];
 		this.populationSize = 6;
 		this.populationFeaturesSize = 16;
